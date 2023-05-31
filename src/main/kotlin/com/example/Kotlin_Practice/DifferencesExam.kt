@@ -16,6 +16,11 @@ class DifferencesExam {
         //System.out.println(people1.equals(people2)); -> false
         //System.out.println(people2.equals(people3)); -> true
 
+        // x|y
+        // x&y
+
+        //----------------------------------------------------------------//
+
         //kotlin
 
         //omit the semicolon
@@ -46,6 +51,20 @@ class DifferencesExam {
         //not referential equal
         println(people4 !== people2) //false
         println(people2 !== people3) //true
+
+        //kotlin bit operators
+        // x or y
+        // x and y
+
+        //smart casting
+        var something: Any = people4;
+        if(something is People){
+            //val newPeople = something as People
+            println(something.name)
+            something="hello"
+            //println(something.name) -> auto block
+
+        }
     }
 }
 
