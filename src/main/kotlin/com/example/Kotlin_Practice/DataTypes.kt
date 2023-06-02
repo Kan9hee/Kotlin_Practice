@@ -26,7 +26,7 @@ class DataTypes {
         println(myCharInt.toChar()) //A
 
         val myBoolean = true
-        println(JavaBooleanCheck().isWorkWithJava(myBoolean)) //working
+        println(JavaCheck().isWorkWithJava(myBoolean)) //working
         //when use java class in kotlin, call java class to method style
     }
 }
