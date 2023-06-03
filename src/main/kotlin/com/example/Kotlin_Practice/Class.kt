@@ -18,6 +18,7 @@ class Class {
 
         val peo = People("John")
         println(peo.firstName)
+        peo.fullTime = false
         println(peo.fullTime)
 
         val peo2 = People("Joe", false)
@@ -26,7 +27,7 @@ class Class {
 
     }
 
-    private class People (val firstName: String, var fullTime: Boolean = true){
+    private class People (val firstName: String, fullTime: Boolean = true){
 
         //val firstName: String = firstName
         /*
@@ -44,5 +45,18 @@ class Class {
             this.fullTime = fullTime
         }   secondary constructor
         */
+
+        //Kotlin generate default setter and getter
+        //If property is private, setter and getter also going to be private
+        var fullTime = fullTime
+            get(){
+                println("Running the custom get")
+                return field
+            }// custom get
+            set(value){
+                println("Running the custom set")
+                field = value
+            }
+        //must declare get and set right after the property
     }
 }
