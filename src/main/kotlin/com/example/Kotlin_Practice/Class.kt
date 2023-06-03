@@ -1,5 +1,7 @@
 package com.example.Kotlin_Practice
 
+val MY_CONSTANT = 100
+
 class Class {
 
     /*Access Modifier
@@ -16,6 +18,8 @@ class Class {
 
     fun classExam(){
 
+        println(MY_CONSTANT)
+
         val peo = People("John")
         println(peo.firstName)
         peo.fullTime = false
@@ -24,6 +28,16 @@ class Class {
         val peo2 = People("Joe", false)
         println(peo2.firstName)
         println(peo2.fullTime)
+
+        val phone = Phone("black","galaxy note 9",4)
+        println(phone)
+        println(peo) //deference between regular class and data class
+
+        val phone2 = phone
+        println(phone2 == phone)
+
+        val phone3 = phone.copy(color = "blue", year = 5)
+        println(phone3)
 
     }
 
@@ -58,5 +72,9 @@ class Class {
                 field = value
             }
         //must declare get and set right after the property
+    }
+
+    private data class Phone(val color: String, val model: String, val year: Int){
+
     }
 }
