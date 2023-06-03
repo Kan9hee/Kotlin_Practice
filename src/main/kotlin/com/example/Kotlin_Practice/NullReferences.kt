@@ -32,6 +32,10 @@ class NullReferences{
         str?.let{printText(it)} //let function: str isn't null operate printText()
 
         println(ex2 == ex4) //safe
+
+        val nullableInts = arrayOfNulls<Int?>(5)
+        for(i in nullableInts){println(i)}
+        nullableInts[3].toString()
     }
 
     fun printText(text: String){println(text)}

@@ -1,5 +1,7 @@
 package com.example.Kotlin_Practice
 
+import com.example.Kotlin_Practice.javacode.JavaCheck
+
 class DataTypes {
     fun exam(){
         val myInt = 10

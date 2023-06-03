@@ -1,5 +1,6 @@
 package com.example.Kotlin_Practice
 
+import com.example.Kotlin_Practice.javacode.JavaCheck
 import java.math.BigDecimal
 
 class ArrayExam {

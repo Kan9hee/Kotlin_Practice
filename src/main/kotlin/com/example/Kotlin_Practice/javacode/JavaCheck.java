@@ -1,4 +1,4 @@
-package com.example.Kotlin_Practice;
+package com.example.Kotlin_Practice.javacode;
 
 public class JavaCheck {
     public String isWorkWithJava(boolean tf){
