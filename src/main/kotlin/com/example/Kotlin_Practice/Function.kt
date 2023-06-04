@@ -23,6 +23,9 @@ class Function {
         for(i in combineClothArray){
             println(i)
         }
+
+        val s = "this is all in lowercase"
+        println(s.upperFirstAndLast())
     }
 
     //simplified function
@@ -44,6 +47,14 @@ class Function {
         for (uniform in clothing){
             println(uniform.color)
         }
+    }
+
+    //extension function
+    //add function to String class
+    fun String.upperFirstAndLast():String{
+        val upperFirst = substring(0,1).uppercase() + substring(1)
+        return upperFirst.substring(0,upperFirst.length-1) +
+                upperFirst.substring(upperFirst.length-1,upperFirst.length).uppercase()
     }
 
     class student(val name:String){
