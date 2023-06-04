@@ -33,6 +33,12 @@ class Function {
                       label: String = "The answer is: "): String =
         "$label ${operand1 * operand2}"
 
+    //inline function
+    //Converts the lambda expression to bytecode corresponding to the body of the function
+    inline fun inlineMultiply(operand1: Int, operand2: Int,
+                      label: String = "The answer is: "): String =
+        "$label ${operand1 * operand2}"
+
     fun simplerMultiply() = 3 * 4
 
     //vararg
