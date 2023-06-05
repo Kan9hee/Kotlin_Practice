@@ -4,6 +4,8 @@ class Inheritance {
     fun inheritanceExam(){
         val laserPrinter = LaserPrinter("Laser",15)
         laserPrinter.printModel()
+
+
     }
 
     //class inheritance
@@ -25,4 +27,30 @@ class Inheritance {
     }
 
     //modifier data is incompatible with open
+
+    //interface
+    //it can have properties, don't have to be abstract
+    private interface MyInterface{
+        val number:Int //abstract
+        //val failNumber: Int = 50
+        val number2:Int
+            get() = number*100 //concrete property
+        //get property in an interface cannot have a backing field
+        fun myFunction(str: String):String
+    }
+
+    private interface MySubInterFace:MyInterface{
+        fun mySubFunction(num: Int):Int
+    }
+
+    private class Something:MySubInterFace{
+        override val number: Int = 25 //defined
+        override fun myFunction(str: String): String {
+            TODO("Not yet implemented")
+        }
+
+        override fun mySubFunction(num: Int): Int {
+            TODO("Not yet implemented")
+        }
+    }
 }
