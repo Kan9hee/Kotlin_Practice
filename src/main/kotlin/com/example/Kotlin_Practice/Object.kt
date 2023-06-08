@@ -36,3 +36,13 @@ class SomeClass private constructor(val someString: String){
         }
     }
 }
+
+//anonymous object
+interface SomeInterface{
+    fun mustImplement(num: Int): String
+}
+
+fun wantsSomeInterface(si: SomeInterface){
+    //When implementing SomeInterface's mustImplement function, the value to be passed can be set here
+    println("Printing from wantsSomeInterface ${si.mustImplement(22)}")
+}
