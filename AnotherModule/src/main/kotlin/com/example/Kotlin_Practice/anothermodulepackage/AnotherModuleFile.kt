@@ -1,11 +1,13 @@
 package com.example.Kotlin_Practice.anothermodulepackage
 
 //add Kotlin_Practice.main module
+import com.example.Kotlin_Practice.Imports
 import com.example.Kotlin_Practice.Function as kp
 
 fun main(args:Array<String>){
     println("another module print")
     println(kp().labelMultiply(3,4))
+    //Imports().packageCheck() -> packageCheck() is internal, so it doesn't work
 }
 
 // This is not a normal kotlin module.
