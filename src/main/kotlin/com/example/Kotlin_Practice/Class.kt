@@ -39,6 +39,7 @@ class Class {
         val phone3 = phone.copy(color = "blue", year = 5)
         println(phone3)
 
+        println(Depatment.ACCOUNTING.getDeptInfo())
     }
 
     private class People (val firstName: String, fullTime: Boolean = true){
@@ -76,5 +77,18 @@ class Class {
 
     private data class Phone(val color: String, val model: String, val year: Int){
 
+    }
+
+    //enum class
+    //Lists the values that are used by classifying them into specific characteristics or attributes
+    enum class Depatment(val fullName:String, val numEmployees: Int){
+
+        //Add a semicolon after the last enum value when adding a function to an enum
+        HR("Human Resources",5),
+        IT("Information Technology",10),
+        ACCOUNTING("Accounting",3),
+        SALES("Sales",20);
+
+        fun getDeptInfo() = "The $fullName department has $numEmployees employees"
     }
 }
