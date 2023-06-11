@@ -1,5 +1,8 @@
 package com.example.Kotlin_Practice
 
+import java.lang.IllegalArgumentException
+import java.lang.NumberFormatException
+
 class Conditional {
 
     enum class TestEnum{
@@ -67,6 +70,25 @@ class Conditional {
             else->println("num = v")
         }
 
+        println(getNum("23.8") ?: "wrong value")
+        notImplementedYet("some") //exception
+    }
 
+    //try/catch
+    //when catch exception, activate finally first, than activate catch
+    fun getNum(str:String):Int?{
+        return try{
+            Integer.parseInt(str)
+        }catch (e:NumberFormatException){
+            null
+        }finally {
+            println("final block")
+            0
+        }
+    }
+
+    //function will never return anything, set type Nothing
+    fun notImplementedYet(some:String):Nothing{
+        throw IllegalArgumentException("implement me")
     }
 }
