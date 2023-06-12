@@ -2,9 +2,6 @@ package com.example.Kotlin_Practice
 
 class Lambda {
     fun lambdaExam(){
-        //lambda
-        //acts as a function even if it does not have a name
-        //it helps to reduce code when writing functions that play simple roles
 
         //run{println("lambda")} -> lambda
         val users = listOf(User("kim","cheolsu",4),
@@ -23,6 +20,17 @@ class Lambda {
         }
 
         run(::topLevel) //call topLevel function like lambda using colon
+
+        println(anotherCountTo100())
+
+        findByLastName(users,"gildong") //print success case and fail case
+
+        "exam String1".apply ex1@{
+            "exam String2".apply {
+                println(lowercase())
+                println(this@ex1.uppercase())
+            }
+        }
     }
 
     fun topLevel() = println("function print")
@@ -31,6 +39,41 @@ class Lambda {
         users.forEach{
             println("${it.firstName}\n${num}")
         }
+    }
+
+    //count and build string
+    fun countTo100():String{
+        val numbers = StringBuilder()
+        for(i in 1..10){
+            numbers.append(i)
+            numbers.append(",")
+        }
+        numbers.append("end")
+        return numbers.toString()
+    }
+
+    //more concise than original to use lambda
+    //other case, using with function
+    fun anotherCountTo100() =
+        StringBuilder().apply() {
+            for (i in 1..10) {
+                    append(i)
+                    append(",")
+                }
+            append("end")
+        }.toString()
+
+    //when the lambda is inside the function, it's returning from the lambda and the function
+    //beware of non-local returns
+    //it can use local returns through symbol
+    fun findByLastName(users:List<User>,lastName: String){
+        users.forEach localBlock@{
+            if(it.lastName == lastName){
+                println("catch $lastName")
+                return@localBlock //the return is now just returning from a lambda, not returning from the function
+            }
+        }
+        println("catch fail to use $lastName")
     }
 
     data class User(val firstName: String,val lastName:String,val startMonth:Int){
