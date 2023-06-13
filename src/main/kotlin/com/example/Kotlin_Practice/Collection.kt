@@ -52,4 +52,35 @@ class Collection {
         mutableNums.add(99)
         println(mutableNums)
     }
+
+    fun mapExam(){
+        val immutableMap = mapOf<Int,Car>(
+            1 to Car("Black",2020),
+            2 to Car("Blue",2021))
+        println(immutableMap.javaClass) //class java.util.LikedHashMap
+        println(immutableMap)
+
+        val mutableMap = mutableMapOf<String,Car>(
+            "car 1" to Car("Red",2019),
+            "car 2" to Car("Green",2010))
+        println(mutableMap.javaClass) //class java.util.HashMap
+        mutableMap.put("My car",Car("White",2023))
+        println(mutableMap)
+
+        val pair = Pair(10,"ten")
+        val(firstValue,secondValue) = pair //destructuring declaration
+        println(firstValue) //10
+        println(secondValue) //ten
+
+        for((key,value) in mutableMap){
+            println("$key -> $value")
+        }
+
+        val (color,year) = Car("Yellow",1988)
+        println("color is $color, year is $year")
+    }
+
+    data class Car(val color:String,val year:Int){
+
+    }
 }
