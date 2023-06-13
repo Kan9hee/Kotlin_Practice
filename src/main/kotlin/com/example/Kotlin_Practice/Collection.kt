@@ -28,4 +28,28 @@ class Collection {
         val arrayToList = arrayOf("ex1","ex2","ex3").toList()
         println(arrayToList)
     }
+
+    fun colFunc(){
+        val strings = listOf("string","other","and another")
+        val colorList = listOf("red","blue","white")
+        val nums = listOf(1,2,3,4,5)
+        println(strings.last()) //and another
+        println(strings.asReversed()) //and another, other, string
+        println(strings.getOrNull(5)) //print element 5, if activate exception, return null
+        println(nums.max()) //5
+        println(colorList.zip(strings)) //[(red, string), (blue, other), (white, and another)]
+
+        val mergedLists = listOf(colorList,strings)
+        println(mergedLists) //[[red, blue, white], [string, other, and another]]
+        val combineList = strings + colorList
+        println(combineList) //[string, other, and another, red, blue, white]
+
+        val duplicatedColorList = listOf("red","blue","white","blue","red")
+        val noDupList = duplicatedColorList.union(strings) //doesn't have any duplicate element
+        println(noDupList) //[red, blue, white, string, other, and another]
+        println(duplicatedColorList.distinct()) //remove all the duplicate elements
+        val mutableNums = nums.toMutableList() //change immutable list
+        mutableNums.add(99)
+        println(mutableNums)
+    }
 }
