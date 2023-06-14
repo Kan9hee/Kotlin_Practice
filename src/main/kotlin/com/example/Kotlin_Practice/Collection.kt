@@ -130,6 +130,26 @@ class Collection {
         println(cars.sortedBy { it.year }) //sorted by year value
     }
 
+    fun sequenceExam(){
+        //sequence
+        //pretty same as streams in java
+        //instead of each step in the chain evaluating the entire collection at once
+        //and then returning and passing that collection
+        //avoid the creation of intermediate instances
+        val immutableMap = mapOf<Int,Car>(
+            1 to Car("Black",2020),
+            2 to Car("Blue",2021),
+            3 to Car("Red",2019),
+            4 to Car("Black",2010)
+        )
+
+        println(immutableMap.asSequence().filter { it.value.year>2020 })
+        listOf("ex1","ex2","ex3").asSequence() //if no use sequence, search all element
+            .map { println("mapping $it"); it.uppercase() }
+            .filter { println("filtering $it"); it[0]=='E' }
+            .find{ it.endsWith('1') } //if find element, terminates chain
+    }
+
     data class Car(val color:String,val year:Int){
 
     }
