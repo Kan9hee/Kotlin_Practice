@@ -94,6 +94,42 @@ class Collection {
         println(mutableInts)
     }
 
+    fun colFuncEx(){
+        //filter
+        //get it items based on a predicate expressed as a lambda
+        //remove elements you don't want in the collection
+        //but the elements themselves don't change
+        val nums = listOf(1,2,3,4,5)
+        val immutableMap = mapOf<Int,Car>(
+            1 to Car("Black",2020),
+            2 to Car("Blue",2021)
+        )
+        val mutableMap = mutableMapOf(
+            1 to Car("Red",2019),
+            2 to Car("Green",2010)
+        )
+
+        println(nums.filter { it % 2 != 0 })
+        println(immutableMap.filter { it.value.year == 2019 })
+        mutableMap.filter { it.value.color == "Red" }
+        println(mutableMap)
+
+        val add10List = nums.map{it+10} //return collection
+        println(add10List) //class java.util.ArrayList
+
+        println(immutableMap.map { it.value.year }) //2020,2021
+        println(immutableMap.filter{it.value.color=="Red"}
+            .map { it.value.year })
+        println(immutableMap.any{it.value.year<2014}) //false
+        println(immutableMap.count{it.value.year<2014}) //0
+
+        val cars = immutableMap.values
+        println(cars.find{it.year>2020}) //find blue car
+        println(cars.groupBy { it.color }) //make group same color element
+        println(immutableMap.toSortedMap()) //sorted by key value
+        println(cars.sortedBy { it.year }) //sorted by year value
+    }
+
     data class Car(val color:String,val year:Int){
 
     }
