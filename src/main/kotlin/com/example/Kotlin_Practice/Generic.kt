@@ -31,6 +31,12 @@ class Generic {
             val strList = listAny as List<String>
             println(strList[1].replace("str","string"))
         }
+
+        val mixedList:List<Any> = listOf("1",2,3.3,'4')
+        val onlyDoubles=getElementsOfType<Double>(mixedList)
+        for(i in onlyDoubles){
+            println(i) //3.3
+        }
     }
 
     //accept any type of list
@@ -52,5 +58,18 @@ class Generic {
     fun <T> append(item1:T,item2:T)
     where T:CharSequence, T:Appendable{
         println("result: ${item1.append(item2)}")
+    }
+
+    //reification
+    //prevents type from being erased at runtime
+    //in this case, function must be inlined
+    inline fun <reified T> getElementsOfType(list:List<Any>): List<T>{
+
+        var newList: MutableList<T> = mutableListOf()
+        for(element in list){
+            if(element is T){ newList.add(element) }
+        }
+
+        return newList
     }
 }
