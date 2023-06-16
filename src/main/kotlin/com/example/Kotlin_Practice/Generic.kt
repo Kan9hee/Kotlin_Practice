@@ -37,6 +37,9 @@ class Generic {
         for(i in onlyDoubles){
             println(i) //3.3
         }
+
+        val shortList:MutableList<Short> = mutableListOf(1,2,3,4)
+        //mutableConvertToInt(shortList)
     }
 
     //accept any type of list
@@ -72,4 +75,28 @@ class Generic {
 
         return newList
     }
+
+    //covariance
+    //use when such subtypes are preserved so that instances of the type or subtype can be passed
+    //collections interface is covariant, but mutable collection isn't
+    fun mutableConvertToInt(collection: MutableList<Number>){
+        for(num in collection){ println("${num.toInt()}") }
+        //collection.add(25.3) -> this problem can happen if there are no restrictions on covariant classes
+    }
+
+
+    //when declaring something as covariant, the ability to write to an instance and modify it is lost
+    //also to ensure that writing to it is not possible, member functions are prohibited
+    //from accepting a parameter of type T
+    fun tendGarden(roseGarden:Garden<Rose>){
+        waterGarden(roseGarden)
+    }
+    fun waterGarden(garden:Garden<Flower>){}
+    open class Flower{}
+    class Rose:Flower()
+    class Garden<out T:Flower>(val something: T){
+        val flowers:List<T> = listOf()
+        fun pickFlower(i:Int):T=flowers[i]
+        //fun plantFlower(flower:T){}
+    } //->covariant, but only use T in the out position
 }
