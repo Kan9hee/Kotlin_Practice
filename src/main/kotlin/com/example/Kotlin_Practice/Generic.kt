@@ -40,6 +40,15 @@ class Generic {
 
         val shortList:MutableList<Short> = mutableListOf(1,2,3,4)
         //mutableConvertToInt(shortList)
+
+
+        val flowerTender = object:FlowerCare<Flower>{
+            override fun prune(flower: Flower) { println("tending ${flower.name}") }
+        }
+        val roseGarden = Garden2<Rose>(listOf(Rose(), Rose()),flowerTender)
+        roseGarden.tendFlower(0)
+        val violetGarden = Garden2<Violet>(listOf(Violet(), Violet()),flowerTender)
+        violetGarden.tendFlower(1)
     }
 
     //accept any type of list
@@ -78,12 +87,12 @@ class Generic {
 
     //covariance
     //use when such subtypes are preserved so that instances of the type or subtype can be passed
+    //use 'out'
     //collections interface is covariant, but mutable collection isn't
     fun mutableConvertToInt(collection: MutableList<Number>){
         for(num in collection){ println("${num.toInt()}") }
         //collection.add(25.3) -> this problem can happen if there are no restrictions on covariant classes
     }
-
 
     //when declaring something as covariant, the ability to write to an instance and modify it is lost
     //also to ensure that writing to it is not possible, member functions are prohibited
@@ -92,11 +101,24 @@ class Generic {
         waterGarden(roseGarden)
     }
     fun waterGarden(garden:Garden<Flower>){}
-    open class Flower{}
-    class Rose:Flower()
+    open class Flower(val name:String){}
+    class Rose:Flower("Rose")
     class Garden<out T:Flower>(val something: T){
         val flowers:List<T> = listOf()
         fun pickFlower(i:Int):T=flowers[i]
         //fun plantFlower(flower:T){}
     } //->covariant, but only use T in the out position
+
+    //contravariance
+    //opposite of covariance, accepts only current class, and its superclasses.
+    //it's not ok to treat superclass like current class, so accept contravariant types as parameters
+    //use 'in'
+    interface FlowerCare<in T>{
+        fun prune(flower: T)
+    }
+    class Violet:Flower("Violet")
+    class Garden2<T:Flower>(val flowers:List<T>,val flowerCare:FlowerCare<T>){
+        fun pickFlower(i:Int)=flowers[i]
+        fun tendFlower(i:Int){ flowerCare.prune(flowers[i]) }
+    }
 }
