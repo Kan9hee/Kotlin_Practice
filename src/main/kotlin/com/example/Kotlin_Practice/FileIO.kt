@@ -60,4 +60,14 @@ class FileIO {
 
         //try(fr:FileReader = blabla) -> compiler doesn't have try with resources in the same way that java does
     }
+
+    fun walkExam(){
+        //walk
+        //accepts a direction specifying whether to walk up or down a tree
+        //walk up function walks up a file tree, then visit after their files
+        //walk down function walks down a file tree, then visits directories before other files
+        File(".").walkTopDown()
+            .filter { it.name.endsWith(".kt") } //filtering kotlin file
+            .forEach { println(it) }
+    }
 }
