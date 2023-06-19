@@ -21,4 +21,24 @@ class Interoperability {
         println(model)//null
     }
 
+    fun callJavaExtend(){
+        val car = JavaCar("black","Ford",2020)
+        car.variableMethod(5,"hello","goodbye")
+
+        val strings = arrayOf("hello","goodbye")
+        car.variableMethod(5,*strings) //spread operator: unpack array
+
+        car.needIntArray(intArrayOf(1,2,3)) //kotlin can't pass big array class
+                                            //so pass one of the special primitive type array
+
+        //(car.anObject as java.lang.Object).notify()
+
+        //kotlin don't declare stuff is static
+        //static method and field are convert companion objects
+        println("x=${JavaCar.x}") //4
+        println(JavaCar.xString()) //
+
+        car.method({println("java thread call kotlin")})
+    }
+
 }
