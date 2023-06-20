@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JavaGeneric {
-    public static void main(String[] args){
+    public static void javaGenericExam(){
         List<String> list=new ArrayList<>();
         list.add("exam1");
         list.get(0).toUpperCase();
